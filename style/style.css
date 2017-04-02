@@ -2,3 +2,18 @@
   margin: 0px;
   padding: 0px;
 }
+
+.centered {
+  text-align: center;
+}
+
+html, body {
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
