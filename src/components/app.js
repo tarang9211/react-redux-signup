@@ -26,7 +26,7 @@ class App extends Component {
     const { step } = this.props.form;
     return (
       <main>
-        <h4>Sign Up</h4>
+        <h4 className='centered'>Sign Up</h4>
         <progress max='3' value={step}></progress>
       </main>
     );
