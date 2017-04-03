@@ -10,7 +10,7 @@ class App extends Component {
   }
 
   showForm = () => {
-    const { step } = this.props.form;
+    const { step } = this.props.data;
 
     switch (step) {
       case 1:
@@ -23,18 +23,19 @@ class App extends Component {
   }
 
   render() {
-    const { step } = this.props.form;
+    const { step } = this.props.data;
     return (
       <main>
         <h4 className='centered'>Sign Up</h4>
         <progress max='3' value={step}></progress>
+        {this.showForm()}
       </main>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  form: state.form
+  data: state.data
 });
 
 export default connect(mapStateToProps)(App);

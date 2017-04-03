@@ -1,6 +1,7 @@
 * {
   margin: 0px;
   padding: 0px;
+  box-sizing: border-box;
 }
 
 .centered {
@@ -16,4 +17,35 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+main {
+  border: 1px solid gray;
+}
+
+progress {
+  width: 100%;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 300px;
+}
+
+
+.form-container > .form-field {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 35px;
+  flex: 0 0 65px;
+}
+
+.form-field:first-child {
+  margin-top: 20px;
+}
+
+.form-container > .form-field > label {
+  padding-bottom: 10px;
 }
