@@ -6,7 +6,7 @@ import { updateStep } from '../actions/index';
 class Credentials extends Component {
 
   onSubmit = props => {
-    console.log(props);
+    this.props.updateStep();
   }
 
   renderInput = props => {
@@ -21,7 +21,7 @@ class Credentials extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props; //redux-form provides this
+    const { handleSubmit, pristine, submitting } = this.props; //redux-form provides this
     return (
       <form className="form-container" onSubmit={handleSubmit(this.onSubmit)}>
 
@@ -47,7 +47,7 @@ class Credentials extends Component {
         />
 
         <div className="actions">
-          <button type="submit">Next</button>
+          <button type="submit" disabled={ pristine || submitting }>Next</button>
         </div>
 
       </form>
@@ -75,18 +75,20 @@ const validate = values => {
 
   if (values.confirmPassword !== values.password) {
     errors.confirmPassword = 'Please ensure passwords match';
-    errors.password = 'Please ensure passwords match';
   }
 
 
   return errors;
 };
 
-const mapStateToProps = state => {
-  data: state.form;
-};
+const mapStateToProps = state => ({
+  data: state.form
+})
 
-export default reduxForm({
+
+Credentials = reduxForm({
   form: 'credentials',
   validate
-}, mapStateToProps, { updateStep })(Credentials);
+})(Credentials);
+
+export default connect(mapStateToProps, { updateStep })(Credentials);
